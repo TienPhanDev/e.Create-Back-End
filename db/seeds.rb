@@ -107,8 +107,7 @@ event7 = Event.create(
     category: "social",
     description: Faker::Lorem.paragraph(sentence_count: 2),
     location: "Rockville, MD",
-    image_url: "https://static.billboard.com/files/media/02-the-weeknd-press-2019-cr-Nabil-Elderkin-billboard-1548-768x433.jpg",
-    date: "November 2th, 2020",
+    image_url: "https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1588607370/torontosomca/tq4th6ph90fx4mnfmrfj/pexels-photo-414630.jpg",
     price: 1,
     tickets_remaining: rand(20..80),
     capacity: 100
@@ -163,7 +162,7 @@ event12 = Event.create(
     category: "networking",
     description: Faker::Lorem.paragraph(sentence_count: 2),
     location: "Fairfax, Virginia",
-    image_url: "https://www.eventbrite.com/e/backyard-compost-basics-a-free-webinar-tickets-103866306920?aff=ebdssbonlinesearch",
+    image_url: "https://houstonlibrary.org/sites/default/files/bookclub2.jpg",
     date: "October 20th, 2020",
     price: 15,
     tickets_remaining: 36,
