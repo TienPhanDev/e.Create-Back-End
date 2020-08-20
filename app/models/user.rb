@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :bookmarks
     has_many :events, through: :tickets
     has_many :events, through: :bookmarks
-    has_secure_password
+    #has_secure_password
     validates :username, uniqueness: true
 
     def event_tickets

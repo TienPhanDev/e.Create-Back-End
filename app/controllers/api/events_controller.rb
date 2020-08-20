@@ -19,18 +19,13 @@ class Api::EventsController < ApplicationController
     def create
         event = Event.create(
             title: params[:title], 
-            description: params[:description], 
-            location: params[:location],
+            category: params[:category], 
+            description: params[:description],
+            location: params[:location], 
             image_url: params[:image_url], 
-            date: params[:date], 
+            date: params[:date],
             price: params[:price]
         )
-            render json: event.to_json(
-                :only => [:id, :title, :description, :location, :image_url, :date, :price]
-            )
-    end
-
-    # DELETE /events/:id
-    def destroy
+        render json: event.to_json
     end
 end

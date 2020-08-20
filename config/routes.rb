@@ -4,9 +4,6 @@ Rails.application.routes.draw do
     resources :events
     resources :tickets
     post "users/login", to: "users#find_user", as: "find_user"
-  end
-
-  namespace :api do
-    resources :bookmarks
+    post "users/register", to: "users#create", as: "register"
   end
 end

@@ -7,4 +7,12 @@ class Api::TicketsController < ApplicationController
           exclude: [:updated_at, :created_at]
       )
   end
+
+  def index
+    @tickets = Ticket.all
+    render json: @tickets.to_json(
+      include: [:event],
+      exclude: [:updated_at, :created_at]
+  )
+  end
 end

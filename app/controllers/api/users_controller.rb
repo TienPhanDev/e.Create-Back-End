@@ -1,9 +1,9 @@
 class Api::UsersController < ApplicationController
-  #Used to find specific user after login to persist ticket/bookmark details
-  #GET /users/find_user/
-  def find_user
+
+    #GET /users/find_user/
+    def find_user
       user = User.find_by(username: params[:username])
-      if (user && user.authenticate(params[:password]))
+      #if (user && user.authenticate(params[:password]))
         render json: user.to_json(
             :only => [:id, :username],
             :include => {
@@ -16,9 +16,9 @@ class Api::UsersController < ApplicationController
             },
             :methods => [:event_tickets, :bookmarked_events]
         )
-    else 
-        render json: {errors: "invalid username"}
-    end
+    # else 
+    #     render json: {errors: "invalid username"}
+    # end
   end
 
   # GET /users/:id
@@ -46,23 +46,24 @@ class Api::UsersController < ApplicationController
 
   # POST /users
   def create
-      user = User.create(user_params)
-      if user.valid?
-      render json: user.to_json(
-          :only => [:id, :username],
-          :include => {
-              :tickets => {
-                  :include => [:event]
-              },
-              :bookmarks => {
-                  :include => [:event]
-              }
-          },
-          :methods => [:event_tickets, :bookmarked_events]
+      @user = User.create(username: params[:username], password_digest: params[:password])
+      #if @user.valid?
+        #@token = encode_token(user_id: @user.id)
+        render json: @user.to_json(
+            :only => [:id, :username],
+            :include => {
+                :tickets => {
+                    :include => [:event]
+                },
+                :bookmarks => {
+                    :include => [:event]
+                }
+            },
+            :methods => [:event_tickets, :bookmarked_events]
       )
-      else
-          render json: { error: 'failed to create user' }, status: :not_acceptable
-      end
+    #   else
+    #       render json: { error: 'failed to create user' }, status: :not_acceptable
+    #   end
   end
 
   # DELETE /users/delete_bookmark
